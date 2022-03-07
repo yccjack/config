@@ -1,0 +1,44 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: 'http://42.192.209.81:8761/eureka/'
+spring:
+  cloud:
+    discovery:
+      enable: true
+    loadbalancer:
+      retry:
+        enabled: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+        - id: entrance-service
+          uri: lb://entrance-service
+          predicates:
+            - Path= /entrance/**
+            - Method=POST
+          filters:
+            - StripPrefix=1
+            - AddResponseHeader=X-Response-Default-Foo, mystical-service-Bar
+        - id: mystical-stream
+          uri: lb://mystical-stream
+          predicates:
+            - Path= /stream/**
+            - Method=POST
+          filters:
+            - StripPrefix=1
+            - AddResponseHeader=X-Response-Default-Foo, mystical-service-Bar
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path= /sso/**
+            - Method=POST
+          filters:
+            - StripPrefix=1
+            - AddResponseHeader=X-Response-Default-Foo, mystical-service-Bar
+  profiles: dev
