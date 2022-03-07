@@ -1,0 +1,18 @@
+spring:
+  rabbitmq:
+    host: 192.168.44.129
+    port: 5672
+    username: guest
+    password: guest
+  datasource:
+    initialization-mode: always
+    driverClassName: 'com.mysql.cj.jdbc.Driver'
+    url: jdbc:mysql://192.168.44.129:3306/mystical?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: admin
+    password: '123456'
+elasticsearch:
+  host: 192.168.44.129
+  port: 9200
+  connTimeout: 3000
+  socketTimeout: 5000
+  connectionRequestTimeout: 500
