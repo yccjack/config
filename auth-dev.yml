@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    initialization-mode: always
+    driverClassName: 'com.mysql.cj.jdbc.Driver'
+    url: jdbc:mysql://localhost:3306/mystical?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: admin
+    password: '123456'
+secure:
+  ignored:
+    urls: #安全路径白名单
+    - /**/auth/**
+    - /**/mq/**
+
+    resources:
+    - /static/**
+    - /img/**
+    - /swagger-ui.html
+    - /swagger-resources/**
+    - /swagger/**
+    - /v2/**
+    - /**/v2/api-docs
+    - /**/*.js
+    - /**/*.css
+    - /**/*.png
+    - /**/*.ico
+    - /webjars/springfox-swagger-ui/**
+oever:
+  signature:
+    time-diff-max: 300
+    algorithm: HmacSHA1
+redis:
+  host: localhost
+  port: 6379
+cookie:
+  domain: localhost
+
