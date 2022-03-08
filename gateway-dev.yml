@@ -4,6 +4,8 @@ eureka:
   client:
     service-url:
       defaultZone: 'http://42.192.209.81:8761/eureka/'
+localhost:
+  test: true
 spring:
   cloud:
     discovery:
