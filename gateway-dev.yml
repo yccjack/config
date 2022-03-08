@@ -17,24 +17,24 @@ spring:
           enabled: true
           lowerCaseServiceId: true
       routes:
-        - id: entrance-service
-          uri: lb://entrance-service
+        - id: entrance
+          uri: lb://entrance
           predicates:
             - Path= /entrance/**
             - Method=POST
           filters:
             - StripPrefix=1
             - AddResponseHeader=X-Response-Default-Foo, mystical-service-Bar
-        - id: mystical-stream
-          uri: lb://mystical-stream
+        - id: stream
+          uri: lb://stream
           predicates:
             - Path= /stream/**
             - Method=POST
           filters:
             - StripPrefix=1
             - AddResponseHeader=X-Response-Default-Foo, mystical-service-Bar
-        - id: auth-service
-          uri: lb://auth-service
+        - id: auth
+          uri: lb://auth
           predicates:
             - Path= /sso/**
             - Method=POST
